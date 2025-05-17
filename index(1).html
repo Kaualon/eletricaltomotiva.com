@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-books de Sistemas Elétricos Automotivos</title>
+    <style>
+        :root {
+            --primary-color: #0d47a1;
+            --secondary-color: #1976d2;
+            --accent-color: #ff6f00;
+            --light-color: #f5f5f5;
+            --dark-color: #212121;
+            --success-color: #4caf50;
+            --ford-color: #003478;
+            --volkswagen-color: #001e50;
+            --renault-color: #ffcc33;
+            --fiat-color: #9c1a33;
+            --chevrolet-color: #d1a856;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero {
+            background-image: url('imagens/carro_eletrico_estacao.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #e65100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .brands {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .brand-card {
+            flex: 1 1 300px;
+            max-width: 350px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .brand-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .brand-header {
+            padding: 1.5rem;
+            text-align: center;
+            color: white;
+        }
+
+        .ford .brand-header {
+            background-color: var(--ford-color);
+        }
+
+        .volkswagen .brand-header {
+            background-color: var(--volkswagen-color);
+        }
+
+        .renault .brand-header {
+            background-color: var(--renault-color);
+            color: var(--dark-color);
+        }
+
+        .fiat .brand-header {
+            background-color: var(--fiat-color);
+        }
+
+        .chevrolet .brand-header {
+            background-color: var(--chevrolet-color);
+            color: var(--dark-color);
+        }
+
+        .general .brand-header {
+            background-color: var(--secondary-color);
+        }
+
+        .brand-content {
+            padding: 1.5rem;
+        }
+
+        .brand-content p {
+            margin-bottom: 1rem;
+        }
+
+        .ebooks-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .ebook-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .ebook-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .ebook-image {
+            height: 200px;
+            background-image: url('imagens/circuito_eletronico.webp');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .ebook-content {
+            padding: 1.5rem;
+        }
+
+        .ebook-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .ebook-description {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .ebook-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .ebook-topics {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .ebook-topics strong {
+            color: var(--primary-color);
+        }
+
+        .complete-package {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .complete-package h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .complete-package p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .package-price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 2rem 0;
+        }
+
+        .payment-info {
+            background-color: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .payment-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .payment-info p {
+            margin-bottom: 1rem;
+        }
+
+        .pix-info {
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .pix-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            padding: 0.5rem;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            margin: 1rem 0;
+            display: inline-block;
+        }
+
+        .included-list {
+            list-style-type: none;
+            margin: 2rem 0;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .included-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .included-list li:before {
+            content: '✓';
+            color: var(--success-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .brands-included {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .brand-badge {
+            background-color: #f0f0f0;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-section {
+            flex: 1 1 300px;
+            margin-bottom: 2rem;
+            padding: 0 1rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            margin-top: 2rem;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .brand-card {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+
+            .package-price {
+                font-size: 2.5rem;
+            }
+
+            .pix-number {
+                font-size: 1.2rem;
+                word-break: break-all;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>E-books de Sistemas Elétricos Automotivos</h1>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Domine a Elétrica Automotiva</h1>
+            <p>Acesse os melhores e-books técnicos sobre sistemas elétricos de Ford, Volkswagen, Renault, Fiat, Chevrolet e outras marcas.</p>
+            <a href="#complete-package" class="btn">Ver Pacote Completo</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="about">
+            <h2 class="section-title">Sobre Nossa Coleção</h2>
+            <p>Nossa biblioteca digital oferece uma coleção abrangente de e-books técnicos sobre sistemas elétricos automotivos das principais marcas do mercado. Seja você um mecânico profissional, estudante de engenharia automotiva ou entusiasta do setor, nossos materiais fornecem informações detalhadas, diagramas precisos e procedimentos passo a passo para compreender, diagnosticar e reparar sistemas elétricos de veículos.</p>
+            <p>Todos os e-books são digitais, permitindo acesso imediato após a compra, e podem ser lidos em qualquer dispositivo. Invista em seu conhecimento e torne-se um especialista em elétrica automotiva!</p>
+        </section>
+
+        <section id="complete-package" class="complete-package">
+            <h2>Pacote Completo de E-books</h2>
+            <p>Adquira agora todos os nossos e-books técnicos sobre sistemas elétricos automotivos em um único pacote com preço especial!</p>
+            
+            <div class="brands-included">
+                <span class="brand-badge">Ford</span>
+                <span class="brand-badge">Volkswagen</span>
+                <span class="brand-badge">Renault</span>
+                <span class="brand-badge">Fiat</span>
+                <span class="brand-badge">Chevrolet</span>
+                <span class="brand-badge">Gerais</span>
+            </div>
+            
+            <ul class="included-list">
+                <li>Mais de 15 e-books técnicos completos</li>
+                <li>Diagramas elétricos detalhados de todas as marcas</li>
+                <li>Manuais oficiais e guias especializados</li>
+                <li>Procedimentos de diagnóstico e reparo</li>
+                <li>Informações sobre veículos híbridos e elétricos</li>
+                <li>Acesso imediato após confirmação do pagamento</li>
+            </ul>
+            
+            <div class="package-price">R$ 14,99</div>
+            
+            <div class="payment-info">
+                <h3>Forma de Pagamento</h3>
+                <p>Aceitamos exclusivamente pagamento via PIX para sua conveniência e segurança.</p>
+                
+                <div class="pix-info">
+                    <p>Chave PIX:</p>
+                    <div class="pix-number">11879226928</div>
+                    <p>Após o pagamento, envie o comprovante para nosso e-mail: <strong>contato@ebooksautomotivos.com.br</strong></p>
+                </div>
+                
+                <p>Você receberá o acesso aos e-books em até 24 horas após a confirmação do pagamento.</p>
+            </div>
+        </section>
+
+        <section id="brands">
+            <h2 class="section-title">Marcas Disponíveis no Pacote</h2>
+            <div class="brands">
+                <div class="brand-card ford">
+                    <div class="brand-header">
+                        <h3>Ford</h3>
+                    </div>
+                    <div class="brand-content">
+                        <p>Manuais técnicos e diagramas elétricos detalhados para veículos Ford, incluindo sistemas de controle, ignição e iluminação.</p>
+                    </div>
+                </div>
+
+                <div class="brand-card volkswagen">
+                    <div class="brand-header">
+                        <h3>Volkswagen</h3>
+                    </div>
+                    <div class="brand-content">
+                        <p>Esquemas elétricos completos e guias de diagnóstico para veículos Volkswagen, com foco em sistemas de direção elétrica e componentes eletrônicos.</p>
+                    </div>
+                </div>
+
+                <div class="brand-card renault">
+                    <div class="brand-header">
+                        <h3>Renault</h3>
+                    </div>
+                    <div class="brand-content">
+                        <p>Materiais especializados sobre centrais automotivas e sistemas elétricos de veículos Renault, incluindo híbridos e elétricos.</p>
+                    </div>
+                </div>
+
+                <div class="brand-card fiat">
+                    <div class="brand-header">
+                        <h3>Fiat</h3>
+                    </div>
+                    <div class="brand-content">
+                        <p>Diagramas eletroeletrônicos e manuais oficiais para modelos Fiat, com informações detalhadas sobre sistemas elétricos e procedimentos de manutenção.</p>
+                    </div>
+                </div>
+
+                <div class="brand-card chevrolet">
+                    <div class="brand-header">
+                        <h3>Chevrolet</h3>
+                    </div>
+                    <div class="brand-content">
+                        <p>Guias completos para diagnóstico e solução de problemas em sistemas elétricos de veículos Chevrolet, incluindo diagramas específicos por modelo.</p>
+                    </div>
+                </div>
+
+                <div class="brand-card general">
+                    <div class="brand-header">
+                        <h3>Gerais</h3>
+                    </div>
+                    <div class="brand-content">
+                        <p>Materiais abrangentes sobre fundamentos de eletricidade automotiva aplicáveis a múltiplas marcas, ideais para iniciantes e profissionais que buscam conhecimento amplo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ebooks">
+            <h2 class="section-title">E-books Incluídos no Pacote</h2>
+
+            <section id="ford">
+                <h3 class="section-title">Ford</h3>
+                <div class="ebooks-list">
+                    <div class="ebook-card">
+                        <div class="ebook-image"></div>
+                        <div class="ebook-content">
+                            <h4 class="ebook-title">Basic Electricity and Electronics for Control 4th Edition</h4>
+                            <p class="ebook-description">Manual completo sobre eletricidade e eletrônica para sistemas de controle automotivo. Aborda fundamentos de eletricidade, componentes eletrônicos e aplicações em sistemas de controle de veículos Ford.</p>
+                            <div class="ebook-topics">
+                                <strong>Tópicos:</strong> Capacitores, retificadores, circuitos de controle, sistemas elétricos básicos
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ebook-card">
+                        <div class="ebook-image"></div>
+                        <div class="ebook-content">
+                            <h4 class="ebook-title">Ford Manual for Owners and Operators</h4>
+                            <p class="ebook-description">Manual detalhado para proprietários e operadores de carros e caminhões Ford. Contém instruções sobre uso, manutenção e operação de veículos Ford do início do século XX.</p>
+                            <div class="ebook-topics">
+                                <strong>Tópicos:</strong> Manutenção básica, operação de veículos, sistemas elétricos, solução de problemas comuns
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ebook-card">
+                        <div class="ebook-image"></div>
+                        <div class="ebook-content">
+                            <h4 class="ebook-title">Ford Taunus 1979-82 Workshop Manual</h4>
+                            <p class="ebook-description">Manual de oficina completo para o Ford Taunus dos anos 1979 a 1982, incluindo diagramas elétricos detalhados e procedimentos de manutenção.</p>
+                            <div class="ebook-topics">
+                                <strong>Tópicos:</strong> Diagramas elétricos, manutenção, reparos, sistemas de ignição, iluminação
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="volkswagen">
+                <h3 class="section-title">Volkswagen</h3>
+                <div class="ebooks-list">
+                    <div class="ebook-card">
+                        <div class="ebook-image"></div>
+                        <div class="ebook-content">
+                            <h4 class="ebook-title">Esquema Elétrico Automotivo VW</h4>
+                            <p class="ebook-description">Esquemas elétricos detalhados para veículos Volkswagen, incluindo estrutura dos esquemas elétricos, alternador, regulador de tensão, bateria e central elétrica.</p>
+                            <div class="ebook-topics">
+                                <strong>Tópicos:</strong> Alternador, regulador de tensão, bateria, central elétrica, código de cores para cabos
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ebook-card">
+                        <div class="ebook-image"></div>
+                        <div class="ebook-content">
+                            <h4 class="ebook-title">Direção Elétrica VW</h4>
+                            <p class="ebook-description">Documento técnico sobre sistemas de direção eletromecânica utilizados nos veículos da Volkswagen, descrevendo características e aplicações em diferentes modelos.</p>
+                            <div class="ebook-topics">
+                                <strong>Tópicos:</strong> Sistemas de direção eletromecânica, componentes, diagnóstico, manutenção
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <a href="#complete-package" class="btn" style="display: block; width: 200px; margin: 2rem auto; text-align: center;">Adquirir Pacote Completo</a>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sobre Nós</h3>
+                    <p>Somos especializados em fornecer e-books técnicos de alta qualidade sobre sistemas elétricos automotivos para profissionais e entusiastas.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <a href="#about">Sobre</a>
+                    <a href="#complete-package">Pacote Completo</a>
+                    <a href="#brands">Marcas</a>
+                    <a href="#ebooks">E-books</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p>Email: contato@ebooksautomotivos.com.br</p>
+                    <p>Telefone: (11) 9999-9999</p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 E-books de Sistemas Elétricos Automotivos. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
